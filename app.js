@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 require('dotenv/config');
 
@@ -8,6 +9,7 @@ require('dotenv/config');
 const cardsRoute = require('./routes/cards');
 
 // Middlewares
+app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
 
 // Create ROUTES
@@ -23,4 +25,7 @@ mongoose.connect(
 );
 
 // Add a method to listen to my server
-app.listen(3000);
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`My app is running on port ${PORT}.`);
+});
