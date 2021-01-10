@@ -4,7 +4,11 @@ const mongoose = require('mongoose');
 
 require('dotenv/config');
 
+// Import Routes
+const cardsRoute = require('./routes/cards');
+
 // Middlewares
+app.use('/cards', cardsRoute);
 
 // Create ROUTES
 app.get('/', (req, res, next) => {
