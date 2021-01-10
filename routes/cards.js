@@ -26,6 +26,17 @@ router.post('/', async (req, res, next) => {
   } catch (e) {
     console.log(e);
     res.status(500).json({ message: e });
+    zx;
+  }
+});
+
+// GET A SPECIFIC CARD BY CATEGORY
+router.get('/:category', async (req, res) => {
+  try {
+    const card = await Card.find({ category: { $eq: req.params.category } });
+    res.json(card);
+  } catch (err) {
+    res.json({ message: err });
   }
 });
 
