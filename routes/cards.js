@@ -35,7 +35,6 @@ router.post('/', async (req, res, next) => {
     const savedCard = await card.save();
     res.status(200).json(savedCard);
   } catch (e) {
-    console.log(e);
     res.status(500).json({ message: e });
     zx;
   }
@@ -74,7 +73,7 @@ router.patch('/:cardId', async (req, res) => {
 router.delete('/:cardId', async (req, res) => {
   try {
     const removedCard = await Card.deleteOne({ _id: req.params.cardId });
-    res.json({ message: 'Card successfully deleted!', removedCard });
+    res.json(removedCard);
   } catch (err) {
     res.json({ message: err });
   }

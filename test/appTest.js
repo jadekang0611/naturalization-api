@@ -107,7 +107,7 @@ describe('/PATCH/:cardId', () => {
 describe('/DELETE/:cardId', () => {
   it('it should DELETE a card given the id', (done) => {
     // make sure to update a cardId (get from the DB)
-    const cardId = '5ffbf7e4358780e9753aaeb1';
+    const cardId = '5ffbf7f0358780e9753aaeb2';
     chai
       .request(app)
       .delete('/cards/' + cardId)
