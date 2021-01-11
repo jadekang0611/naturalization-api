@@ -11,10 +11,15 @@ const cardsRoute = require('./routes/cards');
 // Middlewares
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
+app.set('view engine', 'pug');
+app.set('views', 'views');
 
 // Create ROUTES
 app.get('/', (req, res, next) => {
-  res.send('We are at home');
+  res.render('index', {
+    title: 'Admin Portal',
+    message: 'Naturalization App Admin Portal',
+  });
 });
 
 // Connect to my DB
