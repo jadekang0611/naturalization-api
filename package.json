@@ -4,7 +4,8 @@
   "description": "This is the restapi for the naturalization app",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "nodemon app.js",
+    "test": "mocha"
   },
   "author": "Jade Kang",
   "license": "ISC",
@@ -14,5 +15,10 @@
     "express": "^4.17.1",
     "mongoose": "^5.11.11",
     "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "mocha": "^8.2.1"
   }
 }
