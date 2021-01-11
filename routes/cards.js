@@ -64,7 +64,7 @@ router.patch('/:cardId', async (req, res) => {
         },
       }
     );
-    res.json(updatedCard);
+    res.json({ message: 'Card updated!', updatedCard });
   } catch (err) {
     res.json({ message: err });
   }
@@ -73,8 +73,8 @@ router.patch('/:cardId', async (req, res) => {
 // DELETE A CARD
 router.delete('/:cardId', async (req, res) => {
   try {
-    const removedCard = await Card.remove({ _id: req.params.cardId });
-    res.json(removedCard);
+    const removedCard = await Card.deleteOne({ _id: req.params.cardId });
+    res.json({ message: 'Card successfully deleted!', removedCard });
   } catch (err) {
     res.json({ message: err });
   }

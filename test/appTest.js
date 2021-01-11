@@ -5,6 +5,7 @@ const Card = require('../models/Card');
 const chai = require('chai');
 const chaiHttp = require('chai-http');
 const app = require('../app');
+const { expect } = require('chai');
 let should = chai.should();
 
 chai.use(chaiHttp);
@@ -81,4 +82,38 @@ describe('/GET card', () => {
 //   });
 // });
 
+/* -------Test the /PATCH route------- */
+describe('/PATCH/:cardId', () => {
+  it('it should UPDATE a card given the id', (done) => {
+    const cardId = '5ffbf752358780e9753aaeaf';
+    chai
+      .request(app)
+      .patch('/cards/' + cardId)
+      .send({
+        question: 'Testing question',
+        answer: 'Testing answer',
+        category: 'Changed category',
+      })
+      .end((err, res) => {
+        res.should.have.status(200);
+        res.body.should.be.a('object');
+        // res.body.should.have.property('message').eql('Card updated!');
+        // res.body.card.should.have.property('category').eql('Changed category');
+        done();
+      });
+  });
+});
 
+describe('/DELETE/:cardId', () => {
+  it('it should DELETE a card given the id', (done) => {
+    // make sure to update a cardId (get from the DB)
+    const cardId = '5ffbf7e4358780e9753aaeb1';
+    chai
+      .request(app)
+      .delete('/cards/' + cardId)
+      .end((err, res) => {
+        res.should.have.status(200);
+        done();
+      });
+  });
+});
