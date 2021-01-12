@@ -36,7 +36,6 @@ router.post('/', async (req, res, next) => {
     res.status(200).json(savedCard);
   } catch (e) {
     res.status(500).json({ message: e });
-    zx;
   }
 });
 

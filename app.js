@@ -8,11 +8,14 @@ require('dotenv/config');
 // Import Routes
 const cardsRoute = require('./routes/cards');
 const registerRoute = require('./routes/register');
+const profileRoute = require('./routes/profile');
 
 // Middlewares
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
 app.use('/register', registerRoute);
+app.use('/profile', profileRoute);
 
 // view engine setup
 app.set('view engine', 'pug');

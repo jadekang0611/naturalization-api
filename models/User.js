@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 // Create my schema
-const UserSchema = new mongoose.Schema({
+const UserSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
@@ -20,4 +20,4 @@ const UserSchema = new mongoose.Schema({
 });
 
 // Give my model a name and tell my MongoDB what schema to use when creating data.
-module.exports = mongoose.model('Users', UserSchema);
+module.exports = mongoose.model('User', UserSchema);
