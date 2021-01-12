@@ -1,25 +1,8 @@
-<!DOCTYPE html>
-html(lang="en")
-    head
-        meta(charset="UTF-8")
-        meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title= title
-    body
-        h1= message
+extends layout.pug
 
-        h3 Sign Up
-
-        form(method='POST' action='/register')
-            div.form-group
-                label(for='name') Name:
-                input#name.form-control(type='text', placeholder="What's your name?" name='name')
-            div.form-group
-                label(for='email') Email:
-                input#email.form-control(type='email', placeholder='name@email.com' name='email')
-            div.form-group
-                label(for='pw') Password:
-                input#pw.form-control(type='password' name='password')
-            button.btn.btn-primary(type='submit') Create my account
-            
-
-
+block content
+    section#content
+        h2= message
+    footer
+        p= footer
+        

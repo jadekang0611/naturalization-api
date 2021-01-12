@@ -13,14 +13,17 @@ const registerRoute = require('./routes/register');
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
 app.use('/register', registerRoute);
+
+// view engine setup
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
 // Create ROUTES
 app.get('/', (req, res, next) => {
   res.render('index', {
-    title: 'Admin Portal',
-    message: 'Naturalization App Admin Portal',
+    title: 'Home',
+    message: 'Welcome, Jade',
+    footer: 'Make sure to maintain the app well!',
   });
 });
 

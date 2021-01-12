@@ -1,0 +1,16 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Flashy | #{title}
+    body
+        // load navbar.pug
+        include navbar
+
+        // content block
+        block content
+
+        // footer
+        footer
+            p.foot.text-xs-center 2021 Copyright https://jadekang.me
