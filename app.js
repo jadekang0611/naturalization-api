@@ -7,10 +7,12 @@ require('dotenv/config');
 
 // Import Routes
 const cardsRoute = require('./routes/cards');
+const registerRoute = require('./routes/register');
 
 // Middlewares
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
+app.use('/register', registerRoute);
 app.set('view engine', 'pug');
 app.set('views', 'views');
 
