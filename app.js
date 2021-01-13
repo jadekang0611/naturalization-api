@@ -1,8 +1,10 @@
 const express = require('express');
-const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session);
+
+const app = express();
 
 require('dotenv/config');
 
@@ -15,20 +17,38 @@ const logoutRoute = require('./routes/logout');
 
 // Middlewares
 
+// make user ID available in templates
+
+// Connect to my DB
+// mongoose.connect(
+//   process.env.DB_CONNECTIONS,
+//   { useUnifiedTopology: true, useNewUrlParser: true },
+//   () => console.log('DB connected')
+// );
+
+// mongoDB connection for testing mode
+mongoose.connect('mongodb://localhost:27017/mydb');
+const db = mongoose.connection;
+// mongo error
+db.on('error', console.error.bind(console, 'connection error:'));
+
 // use sessions for tracking logins
 app.use(
   session({
     secret: 'I love you',
     resave: true,
-    saveUninitialized: true,
+    saveUninitialized: false,
+    store: new MongoStore({
+      mongooseConnection: db,
+    }),
   })
 );
 
-// make user ID available in templates
 app.use((req, res, next) => {
   res.locals.currentUser = req.session.userId;
   next();
 });
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
@@ -65,19 +85,6 @@ app.use((err, req, res, next) => {
     error: {},
   });
 });
-
-// Connect to my DB
-// mongoose.connect(
-//   process.env.DB_CONNECTIONS,
-//   { useUnifiedTopology: true, useNewUrlParser: true },
-//   () => console.log('DB connected')
-// );
-
-// mongoDB connection for testing mode
-mongoose.connect('mongodb://localhost:27017/mydb');
-const db = mongoose.connection;
-// mongo error
-db.on('error', console.error.bind(console, 'connection error:'));
 
 // Add a method to listen to my server
 const PORT = process.env.PORT || 3000;
