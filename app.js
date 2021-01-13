@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const session = require('express-session');
 
 require('dotenv/config');
 
@@ -9,13 +10,24 @@ require('dotenv/config');
 const cardsRoute = require('./routes/cards');
 const registerRoute = require('./routes/register');
 const profileRoute = require('./routes/profile');
+const signinRoute = require('./routes/signin');
 
 // Middlewares
+
+// use sessions for tracking logins
+app.use(
+  session({
+    secret: 'I love you',
+    resave: true,
+    saveUninitialized: false,
+  })
+);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
 app.use('/register', registerRoute);
 app.use('/profile', profileRoute);
+app.use('/signin', signinRoute);
 
 // view engine setup
 app.set('view engine', 'pug');

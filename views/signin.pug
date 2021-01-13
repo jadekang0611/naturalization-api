@@ -1,0 +1,15 @@
+extends layout
+
+block content
+    .main.container
+        .row
+            .col-md-6.col-md-offset-3
+                h1 Log In
+                form(method="POST" action="/signin")
+                    .form-group
+                        label(for="email") Email
+                        input(type='text' id='email' placeholder='email' name='email')
+                    .form-group
+                        label(for="email") Password
+                        input(type='text' id='password' placeholder='password' name='password')
+                    button(type='submit') Sign in
