@@ -4,8 +4,11 @@ nav
             a(href='/')
                 i Flash Admin
             .nav-items.clearfix
-                a(href='register') Sign Up
+                if !currentUser
+                    a(href='register') Sign Up
                 a(href='cards') Test Bank
                 a(href='about') About
-
-            a(href='signin') LogIn
+            if currentUser
+                a(href='/logout') Log out
+            else 
+                a(href='signin') LogIn

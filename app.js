@@ -22,6 +22,12 @@ app.use(
     saveUninitialized: false,
   })
 );
+
+// make user ID available in templates
+app.use((req, res, next) => {
+  res.locals.currentUser = req.session.userId;
+  next();
+});
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
