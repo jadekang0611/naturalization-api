@@ -30,6 +30,22 @@ app.get('/', (req, res, next) => {
   });
 });
 
+// catch 404 and forward to error handler
+app.use((req, res, next) => {
+  const err = new Error('Something went wrong');
+  err.status = 404;
+  next(err);
+});
+
+// error handler
+app.use((err, req, res, next) => {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {},
+  });
+});
+
 // Connect to my DB
 // mongoose.connect(
 //   process.env.DB_CONNECTIONS,
