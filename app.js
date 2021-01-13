@@ -11,6 +11,7 @@ const cardsRoute = require('./routes/cards');
 const registerRoute = require('./routes/register');
 const profileRoute = require('./routes/profile');
 const signinRoute = require('./routes/signin');
+const logoutRoute = require('./routes/logout');
 
 // Middlewares
 
@@ -34,6 +35,7 @@ app.use('/cards', cardsRoute);
 app.use('/register', registerRoute);
 app.use('/profile', profileRoute);
 app.use('/signin', signinRoute);
+app.use('/logout', logoutRoute);
 
 // view engine setup
 app.set('view engine', 'pug');
@@ -43,7 +45,7 @@ app.set('views', 'views');
 app.get('/', (req, res, next) => {
   res.render('index', {
     title: 'Home',
-    message: 'Welcome, Jade',
+    message: 'Welcome to the Admin Portal',
     footer: 'Make sure to maintain the app well!',
   });
 });
