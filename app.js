@@ -20,7 +20,7 @@ app.use(
   session({
     secret: 'I love you',
     resave: true,
-    saveUninitialized: false,
+    saveUninitialized: true,
   })
 );
 

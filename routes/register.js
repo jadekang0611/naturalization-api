@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const middleware = require('../middleware');
 
 const User = require('../models/User');
 
 // GET /register
-router.get('/', (req, res, next) => {
+router.get('/', middleware.loggedOut, (req, res, next) => {
   res.render('register', { title: 'Sign Up' });
 });
 

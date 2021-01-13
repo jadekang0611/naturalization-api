@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
+const middleware = require('../middleware');
 
 // GET /login
-router.get('/', (req, res, next) => {
+router.get('/', middleware.loggedOut, (req, res, next) => {
   res.render('signin', { title: 'Log In' });
 });
 // POST /login

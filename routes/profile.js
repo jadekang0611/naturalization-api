@@ -1,13 +1,11 @@
 const express = require('express');
 const router = express.Router();
-
+const middleware = require('../middleware');
 const User = require('../models/User');
 
 // GET /register
-router.get('/', (req, res, next) => {
-  if (!req.session.userId) {
-    res.send('You are not authorized to view this page');
-  }
+// ADD the custom middleware to make it a more logical and simpler protected route
+router.get('/', middleware.requiresSignin, (req, res, next) => {
   User.findById(req.session.userId).exec((err, user) => {
     if (err) {
       res.send('There is an error!');
