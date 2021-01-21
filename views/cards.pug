@@ -3,6 +3,12 @@ extends layout.pug
 block content
     section#content
         h2= message
+        ul 
+            each card in cardBox
+                li
+                    p Question: #{card.question}
+                    p Answer: #{card.answer}
+                    p Category: #{card.category}
     footer
         p= footer
         

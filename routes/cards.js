@@ -7,15 +7,12 @@ const Card = require('../models/Card');
 router.get('/', async (req, res, next) => {
   try {
     const cards = await Card.find();
-    res.json(cards);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
-
-router.get('/view', async (req, res, next) => {
-  try {
-    res.render('cards');
+    res.render('cards', {
+      cardBox: cards,
+      question: cards.question,
+      answer: cards.answer,
+      category: cards.cateqory,
+    });
   } catch (err) {
     res.json({ message: err });
   }
