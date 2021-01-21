@@ -13,6 +13,14 @@ router.get('/', async (req, res, next) => {
   }
 });
 
+router.get('/view', async (req, res, next) => {
+  try {
+    res.render('cards');
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
 // GET A SPECIFIC CARD BY ID
 router.get('/:cardId', async (req, res) => {
   try {

@@ -20,17 +20,19 @@ const logoutRoute = require('./routes/logout');
 // make user ID available in templates
 
 // Connect to my DB
-// mongoose.connect(
-//   process.env.DB_CONNECTIONS,
-//   { useUnifiedTopology: true, useNewUrlParser: true },
-//   () => console.log('DB connected')
-// );
+mongoose.connect(
+  process.env.DB_CONNECTIONS,
+  { useUnifiedTopology: true, useNewUrlParser: true },
+  () => console.log('DB connected')
+);
+
+const db = mongoose.connection;
 
 // mongoDB connection for testing mode
-mongoose.connect('mongodb://localhost:27017/mydb');
-const db = mongoose.connection;
-// mongo error
-db.on('error', console.error.bind(console, 'connection error:'));
+// mongoose.connect('mongodb://localhost:27017/mydb');
+// const db = mongoose.connection;
+// // mongo error
+// db.on('error', console.error.bind(console, 'connection error:'));
 
 // use sessions for tracking logins
 app.use(
