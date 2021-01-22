@@ -8,7 +8,7 @@ block styles
 block content
     section
         if  (editing)
-            form.card-form(action="/admin/edit-card" method="POST")
+            form.card-form(action="/admin/edit-card/"+card.id, method="POST")
                 .form-control
                     label(for="title") Question
                     input(type="text" name="question" value=card.question)#question

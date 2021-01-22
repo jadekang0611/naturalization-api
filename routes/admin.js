@@ -1,10 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const bcrypt = require('bcrypt');
-const middleware = require('../middleware');
 const Card = require('../models/Card');
 
-router.get('/', async (req, res, next) => {
+router.get('/cards', async (req, res, next) => {
   try {
     const cards = await Card.find();
     res.render('admin/cards', {
@@ -35,6 +33,25 @@ router.get('/edit-card/:cardId', async (req, res, next) => {
     } catch (err) {
       res.render({ message: err });
     }
+  }
+});
+
+// SAVE EDITED CARD
+
+router.post('/edit-card/:cardId', async (req, res) => {
+  try {
+    const updatedCard = await Card.findOneAndUpdate(
+      req.params.cardId,
+      {
+        question: req.body.question,
+        answer: req.body.answer,
+        category: req.body.category,
+      },
+      { new: true }
+    );
+    res.redirect('/admin/cards');
+  } catch (err) {
+    res.json({ message: err });
   }
 });
 

@@ -9,24 +9,23 @@
 }
 
 .form-control label,
-.form-control input,
-.form-control textarea {
+.form-control input {
   display: block;
   width: 100%;
   margin-bottom: 0.25rem;
 }
 
 .form-control input {
-  border: 1px solid #34c47c;
+  border: 1px solid #9cebd5;
   font: inherit;
   border-radius: 0.25rem;
 }
 
 button {
   font: inherit;
-  border: 1px solid #34c47c;
+  border: 1px solid #9cebd5;
   border-radius: 6px;
-  background: #34c47c;
+  background: #9cebd5;
   color: white;
   cursor: pointer;
   padding: 4px 8px;
@@ -34,9 +33,9 @@ button {
 
 .btn {
   font: inherit;
-  border: 1px solid #34c47c;
+  border: 1px solid #9cebd5;
   border-radius: 6px;
-  background: #34c47c;
+  background: #9cebd5;
   color: white;
   cursor: pointer;
   padding: 4px 8px;
@@ -47,8 +46,8 @@ button:active,
 .btn:hover,
 .btn:active {
   background-color: white;
-  color: #34c47c;
-  border: 1px solid #34c47c;
+  color: #9cebd5;
+  border: 1px solid #9cebd5;
 }
 
 .card-form {
