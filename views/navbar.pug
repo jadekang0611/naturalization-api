@@ -1,9 +1,14 @@
-nav
+
+
+block styles
+    link(rel="stylesheet", href="css/main.css")
+
+nav.main-header_nav
     button
         .container
             a(href='/')
                 i Flash Admin
-            .nav-items.clearfix
+            .nav-header_item
                 if !currentUser
                     a(href='register') Sign Up
                 a(href='cards') Test Bank

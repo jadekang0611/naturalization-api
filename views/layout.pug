@@ -8,12 +8,29 @@ html(lang="en")
         link(rel="stylesheet", href="/css/main.css")
         block styles
     body
-        // load navbar.pug
-        include navbar
+        header.main-header
+            nav.main-header_nav
+                ul.main-header_item-list
+                    li.main-header_item
+                        a(href="/") Flashy Admin
+                    if !currentUser
+                        li.main-header_item
+                            a(href="about") About
+                        li.main-header_item
+                            a(href="about") Sign Up
+                    if currentUser
+                        li.main-header_item
+                            a(href="cards") Test Bank
+                        li.main-header_item
+                            a(href="/logout") Log Out
+                    else
+                        li.main-header_item
+                            a(href="signin") LogIn
 
         // content block
         block content
 
         // footer
         footer
-            p.foot.text-xs-center 2021 Copyright https://jadekang.me
+            p Designed & Developed by 
+                a(href="https://jadekang.me") Jade Kang

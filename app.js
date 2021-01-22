@@ -17,6 +17,7 @@ const registerRoute = require('./routes/register');
 const profileRoute = require('./routes/profile');
 const signinRoute = require('./routes/signin');
 const logoutRoute = require('./routes/logout');
+const adminRoute = require('./routes/admin');
 
 // Middlewares
 
@@ -61,6 +62,7 @@ app.use('/register', registerRoute);
 app.use('/profile', profileRoute);
 app.use('/signin', signinRoute);
 app.use('/logout', logoutRoute);
+app.use('/admin', adminRoute);
 
 // view engine setup
 app.set('view engine', 'pug');
