@@ -1,0 +1,58 @@
+.card-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
+
+.form-control {
+  margin: 1rem 0;
+}
+
+.form-control label,
+.form-control input,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 0.25rem;
+}
+
+.form-control input {
+  border: 1px solid #34c47c;
+  font: inherit;
+  border-radius: 0.25rem;
+}
+
+button {
+  font: inherit;
+  border: 1px solid #34c47c;
+  border-radius: 6px;
+  background: #34c47c;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+.btn {
+  font: inherit;
+  border: 1px solid #34c47c;
+  border-radius: 6px;
+  background: #34c47c;
+  color: white;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+button:hover,
+button:active,
+.btn:hover,
+.btn:active {
+  background-color: white;
+  color: #34c47c;
+  border: 1px solid #34c47c;
+}
+
+.card-form {
+  width: 20rem;
+  max-width: 90%;
+  margin: auto;
+}
