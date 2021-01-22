@@ -5,15 +5,16 @@ block styles
     link(rel="stylesheet", href="/css/card.css")
 
 block content
-    main
+    section
         if  (editing)
             form.card-form(action="/admin/edit-card" method="POST")
                 .form-control
                     label(for="title") Question
-                    input(type="text" name="question" value=card.question)#question #{product.question}
+                    input(type="text" name="question" value=card.question)#question
                     label(for="category") Category
-                    input(name="category")#category #{product.category}
-                    input(name="answer")#answer #{product.answer}
+                    input(name="category" value=card.category)#category
+                    label(for="answer") Answer
+                    input(name="answer" value=card.answer)#answer
                     button(type="submit") Update Card
                     input(type="hidden", value=card.id, name="cardId")
 
@@ -21,11 +22,10 @@ block content
             form.card-form(action="/admin/add-card" method="POST")
                 .form-control
                     label(for="title") Question
-                    input(type="text" name="question" value=card.question)#question #{product.question}
+                    input(type="text" name="question" value=card.question)#question
                     label(for="category") Category
-                    input(name="category")#category #{product.category}
-                    input(name="answer")#answer #{product.answer}
-                    button(type="submit") Update Card
-                    input(type="hidden", value=card.id, name="cardId")
+                    input(name="category" value=card.category)#category
+                    label(for="answer") Answer
+                    input(name="answer" value=card.answer)#answer
                     button(type="submit") Add Card
 

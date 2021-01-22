@@ -18,23 +18,24 @@ router.get('/', async (req, res, next) => {
     res.json({ message: err });
   }
 });
+
 // Edit Card
-router.get('/edit-card', (req, res, next) => {
+router.get('/edit-card/:cardId', async (req, res, next) => {
   const editMode = req.query.edit;
   if (!editMode) {
     return res.redirect('/');
-  }
-  const cardId = req.params.cardId;
-  Card.findById(cardId, (card) => {
-    if (!card) {
-      return res.redirect('/');
+  } else {
+    try {
+      const card = await Card.findById(req.params.cardId);
+      res.render('admin/edit-card', {
+        title: 'Edit Card',
+        editing: editMode,
+        card: card,
+      });
+    } catch (err) {
+      res.render({ message: err });
     }
-    res.render('admin/edit-card', {
-      title: 'Edit Card',
-      editing: editMode,
-      card: card,
-    });
-  });
+  }
 });
 
 module.exports = router;

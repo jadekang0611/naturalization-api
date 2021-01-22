@@ -15,13 +15,15 @@ block content
                     each card in cardBox
                         .card-wrapper
                             .button-wrapper
-                                a(href="/admin/edit-card/" + card.id + "?edit=true")
+                                a(href="/admin/edit-card/" + card.id + "?edit=true") Edit
                                 form(action="/admin/delete-card" method="POST")
                                     button(type="submit") Delete
                                     input(type="hidden" value=card.id name="cardId")
                             h1 #{card.question}
                             h2 #{card.category}
                             p #{card.answer}
+        else
+            h1 There are no questions and answers in our system yet.
                     
 
 
