@@ -12,6 +12,7 @@ router.get('/cards', async (req, res, next) => {
       category: cards.category,
       answer: cards.answer,
     });
+    res.send(cards);
   } catch (err) {
     res.json({ message: err });
   }
@@ -49,6 +50,39 @@ router.post('/edit-card/:cardId', async (req, res) => {
       },
       { new: true }
     );
+    res.redirect('/admin/cards');
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
+
+// GET ADD PRODUCT FORM
+router.get('/add-card', (req, res, next) => {
+  res.render('admin/edit-card', {
+    title: 'Add Card',
+    editing: false,
+  });
+});
+
+// ADD A NEW CARD
+router.post('/add-card', async (req, res, next) => {
+  const card = new Card({
+    question: req.body.question,
+    answer: req.body.answer,
+    category: req.body.category,
+  });
+  try {
+    const savedCard = await card.save();
+    res.redirect('/admin/cards');
+  } catch (e) {
+    res.status(500).json({ message: e });
+  }
+});
+
+// DELETE A CARD
+router.post('/cards/:cardId', async (req, res, next) => {
+  try {
+    const removeCard = await Card.findByIdAndDelete({ _id: req.params.cardId });
     res.redirect('/admin/cards');
   } catch (err) {
     res.json({ message: err });

@@ -23,10 +23,10 @@ block content
             form.card-form(action="/admin/add-card" method="POST")
                 .form-control
                     label(for="title") Question
-                    input(type="text" name="question" value=card.question)#question
+                    input(type="text" name="question")#question
                     label(for="category") Category
-                    input(name="category" value=card.category)#category
+                    input(name="category")#category
                     label(for="answer") Answer
-                    input(name="answer" value=card.answer)#answer
+                    input(name="answer")#answer
                     button(type="submit") Add Card
 

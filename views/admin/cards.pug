@@ -11,13 +11,14 @@ block content
                 .card-item
                     .add-new-wrapper
                         .button-wrapper
-                            button.add-button(title="add new") +
+                            a.add-button(href="/admin/add-card") Add Card
+                                
                     each card in cardBox
                         .card-wrapper
                             .button-wrapper
                                 a.btn(href="/admin/edit-card/" + card.id + "?edit=true") Edit
-                                form(action="/admin/delete-card" method="POST")
-                                    button(type="submit") Delete
+                                form(action="/admin/cards/" + card.id method="POST")
+                                    button.btn(type="submit") Delete
                                     input(type="hidden" value=card.id name="cardId")
                             h1 #{card.question}
                             h2 #{card.category}
