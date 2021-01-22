@@ -1,16 +1,28 @@
 extends layout.pug
 
+block styles
+    link(rel="stylesheet", href="css/card.css")
+
+
 block content
     section#content
         h2= message
-        ul 
-            each card in cardBox
-                li
-                    p Question: #{card.question}
-                    p Answer: #{card.answer}
-                    p Category: #{card.category}
-                button Edit
-                button Delete
+        .container 
+            .card-item
+                .add-new-wrapper
+                    .button-wrapper
+                        button.add-button(title="add new") +
+                each card in cardBox
+                    .card-wrapper
+                        .button-wrapper
+                            button.card-edit Edit
+                            button.card-delete Delete
+                        h1 #{card.question}
+                        h2 #{card.category}
+                        p #{card.answer}
+                
+
+
     footer
         p= footer
         

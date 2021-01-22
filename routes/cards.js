@@ -8,6 +8,7 @@ router.get('/', async (req, res, next) => {
   try {
     const cards = await Card.find();
     res.render('cards', {
+      title: 'Test Bank',
       cardBox: cards,
       question: cards.question,
       answer: cards.answer,
