@@ -1,15 +1,21 @@
 extends layout
 
+block styles
+    link(rel="stylesheet", href="/css/main.css")
+    link(rel="stylesheet", href="/css/signin.css")
+
 block content
-    .main.container
-        .row
-            .col-md-6.col-md-offset-3
-                h1 Log In
+    .main
+        .left-box
+        .right-box
+            .form
+                h1 Sign In
                 form(method="POST" action="/signin")
                     .form-group
-                        label(for="email") Email
-                        input(type='text' id='email' placeholder='email' name='email')
+                        label(for="email") Username 
+                        input(type='email' id='email' placeholder='username' name='username')
                     .form-group
-                        label(for="email") Password
-                        input(type='text' id='password' placeholder='password' name='password')
-                    button(type='submit') Sign in
+                        label(for="email") Password 
+                        input(type='password' id='password' placeholder='password' name='password')
+                    .btn-div
+                        button.signin-btn(type='submit') Sign in

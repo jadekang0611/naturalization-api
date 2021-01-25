@@ -64,7 +64,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use('/cards', cardsRoute);
 app.use('/register', registerRoute);
-app.use('/profile', profileRoute);
+app.use('/admin/profile', profileRoute);
 app.use('/signin', signinRoute);
 app.use('/logout', logoutRoute);
 app.use('/admin', adminRoute);

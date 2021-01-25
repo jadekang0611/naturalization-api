@@ -25,7 +25,7 @@ router.post('/', async (req, res, next) => {
     try {
       const saveduser = await user.save();
       req.session.userId = user._id;
-      return res.redirect('/profile');
+      return res.redirect('/admin/profile');
     } catch (e) {
       res.status(500).json({ message: e });
     }

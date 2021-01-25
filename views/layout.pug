@@ -15,12 +15,10 @@ html(lang="en")
                         a(href="/") Flashy Admin
                     if !currentUser
                         li.main-header_item
-                            a(href="about") About
-                        li.main-header_item
-                            a(href="about") Sign Up
+                            a(href="register") Sign Up
                     if currentUser
                         li.main-header_item
-                            a(href="cards") Test Bank
+                            a(href="admin/cards") Test Bank
                         li.main-header_item
                             a(href="/logout") Log Out
                     else

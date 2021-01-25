@@ -21,7 +21,7 @@ router.post('/', async (req, res, next) => {
     );
     if (!validPassword) return res.status(401).send('Invalid password!');
     req.session.userId = user._id;
-    return res.redirect('/profile');
+    return res.redirect('/admin/profile');
   } else {
     return res.status(401).send('Email and password are required');
   }
