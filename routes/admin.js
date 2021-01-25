@@ -12,9 +12,9 @@ router.get('/cards', async (req, res, next) => {
       category: cards.category,
       answer: cards.answer,
     });
-    res.send(cards);
+    // res.send(cards);
   } catch (err) {
-    res.json({ message: err });
+    res.render({ message: err });
   }
 });
 
@@ -41,7 +41,7 @@ router.get('/edit-card/:cardId', async (req, res, next) => {
 
 router.post('/edit-card/:cardId', async (req, res) => {
   try {
-    const updatedCard = await Card.findOneAndUpdate(
+    const updatedCard = await Card.findByIdAndUpdate(
       req.params.cardId,
       {
         question: req.body.question,
@@ -52,7 +52,7 @@ router.post('/edit-card/:cardId', async (req, res) => {
     );
     res.redirect('/admin/cards');
   } catch (err) {
-    res.json({ message: err });
+    res.render({ message: err });
   }
 });
 
@@ -75,7 +75,7 @@ router.post('/add-card', async (req, res, next) => {
     const savedCard = await card.save();
     res.redirect('/admin/cards');
   } catch (e) {
-    res.status(500).json({ message: e });
+    res.status(500).render({ message: e });
   }
 });
 
@@ -85,7 +85,7 @@ router.post('/cards/:cardId', async (req, res, next) => {
     const removeCard = await Card.findByIdAndDelete({ _id: req.params.cardId });
     res.redirect('/admin/cards');
   } catch (err) {
-    res.json({ message: err });
+    res.render({ message: err });
   }
 });
 

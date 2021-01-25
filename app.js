@@ -26,7 +26,12 @@ const adminRoute = require('./routes/admin');
 // Connect to my DB
 mongoose.connect(
   process.env.DB_CONNECTIONS,
-  { useUnifiedTopology: true, useNewUrlParser: true },
+  {
+    useUnifiedTopology: true,
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true,
+  },
   () => console.log('DB connected')
 );
 
@@ -73,7 +78,6 @@ app.get('/', (req, res, next) => {
   res.render('index', {
     title: 'Home',
     message: 'Welcome to the Admin Portal',
-    footer: 'Make sure to maintain the app well!',
   });
 });
 
